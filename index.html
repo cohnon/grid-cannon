@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grid Cannon</title>
+    <meta name="author" content="Casey Tai">
+    <meta name="description" content="A solitair card game for cp12">
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- 
+        Change Log:
+            January 17: Researched the rules for grid cannon and created a card with css
+            January 19: Started making the board set up
+            January 20: Finished the Board set up
+     -->
+</head>
+<body>
+    <div id="smallScreen"></div>
+
+    <div id="app"></div>
+
+
+    <template id="menuTemplate">
+        <div id="menuContainer">
+            <p class="menuTitle">Grid Cannon</p>
+            <button id="startButton" class="menuButton">Start</button>
+            <button id="aboutButton" class="menuButton">About</button>
+            <a href="https://github.com/casey-tai/grid-cannon" id="githubButton" class="menuButton">Github</a>    
+        </div>
+    </template>
+
+    <template id="gameTemplate">
+        <button id="backToMenuButton">Back</button>
+        <div id="cardStack">
+            <div id="cardStackHover">Pick</div>
+            <img src="https://images.squarespace-cdn.com/content/v1/53129449e4b03cbb5110b156/1394416765672-98GDJ9OUWXXZ4UHS4QFJ/ke17ZwdGBToddI8pDm48kKxKlxyq4ihzRQYwKO-6s5MUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2vVZq_qxjlAwitgbQ4mi44uqoEFPaKGK65zJfLwSeFtEKMshLAGzx4R3EDFOm1kBS/playing+cards_Back+Two.png">
+        </div>
+        <table>
+            <tr>
+                <td></td>
+                <td id="royale1"></td>
+                <td id="royale2"></td>
+                <td id="royale3"></td>
+            </tr>
+            <tr>
+                <td id="royale4"></td>
+                <td id="tile1"></td>
+                <td id="tile2"></td>
+                <td id="tile3"></td>
+                <td id="royale5"></td>
+            </tr>
+            <tr>
+                <td id="royale6"></td>
+                <td id="tile4"></td>
+                <td id="tile5"></td>
+                <td id="tile6"></td>
+                <td id="royale7"></td>
+            </tr>
+            <tr>
+                <td id="royale8"></td>
+                <td id="tile7"></td>
+                <td id="tile8"></td>
+                <td id="tile9"></td>
+                <td id="royale9"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td id="royale10"></td>
+                <td id="royale11"></td>
+                <td id="royale12"></td>
+            </tr>
+        </table>
+    </template>
+
+    <template id="aboutTemplate">
+        <div id="aboutContainer">
+            <button id="backToMenuButton">Back</button>
+            <p class="menuTitle">About</p>
+            <p>
+                Grid cannon is a single player card game designed by <a href="https://www.pentadact.com/">Tom Francis</a>
+                and it seemed like a fun game to try and recreate as a browser game.<br>
+                The rules may have been updated since I made this, but you can find the rules I used in this
+                <a href="https://www.youtube.com/watch?v=gqmUpQjFHrA&feature=emb_title">video/tutorial</a>
+                or you can read the up to date rules <a href="https://www.pentadact.com/2019-08-20-gridcannon-a-single-player-game-with-regular-playing-cards/">here</a>
+            </p>
+        </div>
+    </template>
+
+    <!--SCRIPTS-->
+    <script src="./scripts/view.js"></script>
+    <script src="./scripts/card.js"></script>
+    <script src="./scripts/board.js"></script>
+    <script src="./scripts/game.js"></script>
+    <script src="./scripts/menus.js"></script>
+    <script src="./scripts/app.js"></script>
+</body>
+</html>
