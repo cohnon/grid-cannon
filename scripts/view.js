@@ -2,7 +2,7 @@
  * This file is in charge of displaying all the stuff
  */
 class View {
-    constructor() {
+    newGame() {
         this.cacheElements()
         this.bindEvents()
     }
@@ -90,6 +90,7 @@ class View {
      * Place the initial empty tiles of the game
      */
     initEmptyTiles() {
+        console.log("initemptytiles")
         for (let i = 0; i < this.$royales.length; i++) {
             const $empty = document.createElement("div")
             $empty.classList = "emptyTile"
@@ -181,7 +182,6 @@ class View {
             $royale7,  $royale8,  $royale9,
             $royale10, $royale11, $royale12
         ]
-
         let $tile1 = $("#tile1")
         let $tile2 = $("#tile2")
         let $tile3 = $("#tile3")

@@ -14,10 +14,8 @@ class Game {
     view = new View()
 
     constructor() {
-        this.newGame()
-
         // initialize onClick events
-        $("#cardStack").click(() => this.pickUpCardFromStack())
+        $(document).on("click", "#cardStack", () => this.pickUpCardFromStack())
 
         // when the user clicks a position
         // not optimized but can't think of another way atm
@@ -70,6 +68,7 @@ class Game {
         this.board.initBoard(initCards)
 
         // view
+        this.view.newGame()
         this.view.initEmptyTiles()
         this.view.gameModeUpdate(this.gameMode)
         for (let i = 0; i < this.board.gridTiles.length; i++) {
@@ -81,7 +80,7 @@ class Game {
      * deletes all game data
      */
     endGame() {
-        
+        this.view.removeCardAsCursor()
     }
 
     /**
