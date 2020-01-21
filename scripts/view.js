@@ -90,7 +90,6 @@ class View {
      * Place the initial empty tiles of the game
      */
     initEmptyTiles() {
-        console.log("initemptytiles")
         for (let i = 0; i < this.$royales.length; i++) {
             const $empty = document.createElement("div")
             $empty.classList = "emptyTile"

@@ -19,24 +19,24 @@ class Game {
 
         // when the user clicks a position
         // not optimized but can't think of another way atm
-        $(document).on("click", "#tile1", e => this.placeCard(e, 0))
-        $(document).on("click", "#tile2", e => this.placeCard(e, 1))
-        $(document).on("click", "#tile3", e => this.placeCard(e, 2))
-        $(document).on("click", "#tile4", e => this.placeCard(e, 3))
-        $(document).on("click", "#tile5", e => this.placeCard(e, 4))
-        $(document).on("click", "#tile6", e => this.placeCard(e, 5))
-        $(document).on("click", "#tile7", e => this.placeCard(e, 6))
-        $(document).on("click", "#tile8", e => this.placeCard(e, 7))
-        $(document).on("click", "#tile9", e => this.placeCard(e, 8))
-        $(document).on("click", "#royale1", e => this.placeCard(e, 9))
-        $(document).on("click", "#royale2", e => this.placeCard(e, 10))
-        $(document).on("click", "#royale3", e => this.placeCard(e, 11))
-        $(document).on("click", "#royale4", e => this.placeCard(e, 12))
-        $(document).on("click", "#royale5", e => this.placeCard(e, 13))
-        $(document).on("click", "#royale6", e => this.placeCard(e, 14))
-        $(document).on("click", "#royale7", e => this.placeCard(e, 15))
-        $(document).on("click", "#royale8", e => this.placeCard(e, 16))
-        $(document).on("click", "#royale9", e => this.placeCard(e, 17))
+        $(document).on("click", "#tile1",    e => this.placeCard(e, 0 ))
+        $(document).on("click", "#tile2",    e => this.placeCard(e, 1 ))
+        $(document).on("click", "#tile3",    e => this.placeCard(e, 2 ))
+        $(document).on("click", "#tile4",    e => this.placeCard(e, 3 ))
+        $(document).on("click", "#tile5",    e => this.placeCard(e, 4 ))
+        $(document).on("click", "#tile6",    e => this.placeCard(e, 5 ))
+        $(document).on("click", "#tile7",    e => this.placeCard(e, 6 ))
+        $(document).on("click", "#tile8",    e => this.placeCard(e, 7 ))
+        $(document).on("click", "#tile9",    e => this.placeCard(e, 8 ))
+        $(document).on("click", "#royale1",  e => this.placeCard(e, 9 ))
+        $(document).on("click", "#royale2",  e => this.placeCard(e, 10))
+        $(document).on("click", "#royale3",  e => this.placeCard(e, 11))
+        $(document).on("click", "#royale4",  e => this.placeCard(e, 12))
+        $(document).on("click", "#royale5",  e => this.placeCard(e, 13))
+        $(document).on("click", "#royale6",  e => this.placeCard(e, 14))
+        $(document).on("click", "#royale7",  e => this.placeCard(e, 15))
+        $(document).on("click", "#royale8",  e => this.placeCard(e, 16))
+        $(document).on("click", "#royale9",  e => this.placeCard(e, 17))
         $(document).on("click", "#royale10", e => this.placeCard(e, 18))
         $(document).on("click", "#royale11", e => this.placeCard(e, 19))
         $(document).on("click", "#royale12", e => this.placeCard(e, 20))
@@ -133,7 +133,6 @@ class Game {
 
         // view
         this.view.setCardAsCursor(this.cardInHand)
-        console.log(this.cardsInStack)
     }
 
     /**
