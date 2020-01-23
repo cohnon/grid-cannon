@@ -14,13 +14,6 @@ class Card {
     constructor(value, suite) {
         this.value = value
         this.suite = suite
-    }
-
-    /**
-     * Determines if a shot succesfully kills a royale
-     * @param {Card[]} cards The two cards that will determine the damage
-     */
-    takeDamage(cards) {
-
+        this.isDead = false // if a royale is dead
     }
 }

@@ -19,6 +19,10 @@ class Menus {
                 this.game.endGame()
             }
         })
+        $(document).on("click", "#restartGame", () => {
+            this.game.endGame()
+            this.game.newGame()
+        })
     }
     
     changePage($page) {

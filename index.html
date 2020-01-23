@@ -15,6 +15,9 @@
             January 17: Researched the rules for grid cannon and created a card with css
             January 19: Started making the board set up
             January 20: Finished the Board set up
+            January 21: Made the placing cards possible
+            January 22: Made the killing royales and losing possible
+            January 23: Cleaned up and placed all in one file
      -->
 </head>
 <body>
@@ -30,10 +33,94 @@
             <button id="aboutButton" class="menuButton">About</button>
             <a href="https://github.com/casey-tai/grid-cannon" id="githubButton" class="menuButton">Github</a>    
         </div>
+        <div id="checklist">
+            <ul>
+                <li>
+                    <p class="checklistQuestion">
+                        What will your program do?
+                    </p>
+                    <p class="checklistAnswer">
+                        Allow a player to play a card game on the browser.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        What will your program interface look like?
+                    </p>
+                    <p class="checklistAnswer">
+                        A grid of playing cards and a deck which the user can manipulate.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        What variables and data structures will you need to 
+                        store information?
+                    </p>
+                    <p class="checklistAnswer">
+                        All cards will have a value and a suite so I can use an object
+                        to represent the card data.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        What will you have to set up during initialization?
+                    </p>
+                    <p class="checklistAnswer">
+                        During initialization, I will need to create a random stack of
+                        cards then distribute them into a ring.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        What will you use for inputs?
+                    </p>
+                    <p class="checklistAnswer">
+                        The only input will be the mouse. The program will get mouse clicks
+                        and mouse position.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        Please list the processing functions/methods that will 
+                        be required.<br>
+                    </p>
+                    <p class="checklistAnswer">
+                        <em>createNewStack()</em>: Will create a deck of 52 unique cards
+                        and shuffle them.<br> 
+                        <em>newGame</em>: Will call createNewStack() and give the first 8 number cards
+                        to the board.<br>
+                        <em>endGame</em>: Will remove all the game data.<br>
+                        <em>availableRoyaleCards/availableNumberCards</em>:
+                        Gets a list of available positions for a card to go when drawn.<br>
+                        <em>placeRoyale/placeNumber</em>: The logic when a card is placed.
+                        (shooting a royale, ending turn, etc.)
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        What will you do for output?
+                    </p>
+                    <p class="checklistAnswer">
+                        I will update a table with a card element in each table
+                        grid. When the player has a card in their hand, I will 
+                        update its position depending on the mouse position.
+                    </p>
+                </li>
+                <li>
+                    <p class="checklistQuestion">
+                        How will you use object oriented programming in your program?
+                    </p>
+                    <p class="checklistAnswer">
+                        My program will be comprised of classes to separate logic.
+                    </p>
+                </li>
+            </ul>
+        </div>
     </template>
 
     <template id="gameTemplate">
         <button id="backToMenuButton">Back</button>
+        <button id="restartGame">Restart</button>
         <div id="cardStack">
             <div id="cardStackHover">Pick</div>
             <img src="https://images.squarespace-cdn.com/content/v1/53129449e4b03cbb5110b156/1394416765672-98GDJ9OUWXXZ4UHS4QFJ/ke17ZwdGBToddI8pDm48kKxKlxyq4ihzRQYwKO-6s5MUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2vVZq_qxjlAwitgbQ4mi44uqoEFPaKGK65zJfLwSeFtEKMshLAGzx4R3EDFOm1kBS/playing+cards_Back+Two.png">
@@ -80,11 +167,37 @@
             <button id="backToMenuButton">Back</button>
             <p class="menuTitle">About</p>
             <p>
-                Grid cannon is a single player card game designed by <a href="https://www.pentadact.com/">Tom Francis</a>
-                and it seemed like a fun game to try and recreate as a browser game.<br>
-                The rules may have been updated since I made this, but you can find the rules I used in this
-                <a href="https://www.youtube.com/watch?v=gqmUpQjFHrA&feature=emb_title">video/tutorial</a>
-                or you can read the up to date rules <a href="https://www.pentadact.com/2019-08-20-gridcannon-a-single-player-game-with-regular-playing-cards/">here</a>
+                Grid cannon is a single player card game designed by
+                <a href="https://www.pentadact.com/">Tom Francis</a>
+                and it seemed like a fun game to try and recreate as a browser game.
+                I changed the rules a little to get everything done
+                if a shorter amount of time.
+                You can find the full set of rules
+                <a href="https://www.youtube.com/watch?v=gqmUpQjFHrA&feature=emb_title">here</a>
+                or read my quicker version.<br><br>
+                MY RULES:
+                <ul>
+                    GOAL: to kill all the royales(11, 12, 13 cards)
+                    <li>SETUP: 8 cards are put in an O shape.
+                        Any royale cards are put back on the top of the deck</li>
+                    <li>MOVE: Take a card from the deck,
+                        If it's a numbered card, place it in the center 3x3 grid.
+                        It can only go on a card less than or equal to in value.<br>
+                        If it's a royale card, place it on the outer ring.
+                        It has to neighbor the most similar card to it.
+                    </li>
+                    <li>ATTACK: Whenver you place a number card, the cards between it and 
+                        a royale will be added up and that number will be your "payload".<br>
+                        To kill a joker, the payload must be higher than or equal to 11.<br>
+                        To kill a queen, the payload must be higher than or equal to 12
+                        and be the same color
+                        To kill a king, the payload must be higher than or equal to 13
+                        and be the same suite.
+                    </li>
+                    <li>LOSE: You lose if there are no more available move to play or
+                        your deck runs out of cards
+                    </li>
+                </ul>
             </p>
         </div>
     </template>

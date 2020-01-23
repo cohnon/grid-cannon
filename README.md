@@ -1,35 +1,34 @@
 # Grid Cannon
 
-## Objects
+## Rules
 
-### Game
-vars:
-- int score : The current score
-- Card[] cardsInStack : An array of available Card objects
-- Card currentCard : The current card being placed
+### GOAL
 
-funcs:
-- createNewStack : Randomly shuffles an array of cards
-- placeRoyale : Place a royale adjacent to a similar card
-- placeCard : Place a card onto a spot on the grid that is less than or equal in value
-- fireCannon : Fire a shot(s) from a grid position and kill a royale if possible
-- noMove : Add a card as armour to a royale
+to kill all the royales(11, 12, 13 cards)
 
-### Board
-vars:
-- Card[] gridTiles : An array representing the tiles on the board
+### SETUP:
 
-funcs: 
-- initBoard : Places cards in the grid removing any royale cards
+8 cards are put in an O shape.
+Any royale cards are put back on the top of the deck
 
+### MOVE: 
 
-### Card
-vars:
-- int value : The value of a vard
-- int suite : 0 = Hearts, 1 = Diamonds, 2 = Clubs, 3 = Spades
+Take a card from the deck
+If it's a numbered card, place it in the center 3x3 grid.
+It can only go on a card less than or equal to in value.
+If it's a royale card, place it on the outer ring.
+It has to neighbor the most similar card to it.
+                    
+### ATTACK:
 
-funcs:
-- takeDamage : Determines if royale dies based on the damage taken 
-
-## Functions
-
+Whenver you place a number card, the cards between it and 
+a royale will be added up and that number will be your "payload".
+To kill a joker, the payload must be higher than or equal to 11.
+To kill a queen, the payload must be higher than or equal to 12
+and be the same color
+To kill a king, the payload must be higher than or equal to 13
+and be the same suite.
+                    
+### LOSE:
+You lose if there are no more available move to play or your deck runs out of cards
+                    

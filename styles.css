@@ -6,7 +6,7 @@
 }
 body {
     background-image: linear-gradient(90deg, rgb(209, 191, 168), rgb(235, 212, 187));
-    overflow: hidden;
+    overflow-x: hidden;
 }
 #cardStack {
     position: absolute;
@@ -154,6 +154,10 @@ table {
 .validMove:hover {
     background-color: rgb(75, 221, 30);
 }
+.deadRoyale {
+    background: url(https://images.squarespace-cdn.com/content/v1/53129449e4b03cbb5110b156/1394416765672-98GDJ9OUWXXZ4UHS4QFJ/ke17ZwdGBToddI8pDm48kKxKlxyq4ihzRQYwKO-6s5MUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2vVZq_qxjlAwitgbQ4mi44uqoEFPaKGK65zJfLwSeFtEKMshLAGzx4R3EDFOm1kBS/playing+cards_Back+Two.png) 0 0 no-repeat;
+    background-size: contain;
+}
 
 
 /*********/
@@ -228,4 +232,21 @@ a {
         text-align: center;
         margin-top: 200px;
     }
+}
+
+#checklist {
+    padding: 1px 2rem 4rem 2rem;
+    background: rgb(254, 255, 241);
+    width: 50%;
+    margin: 1rem auto;
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 rgba(77, 67, 67, 0.596);
+    text-align: center;
+}
+.checklistQuestion {
+    margin: 3rem 0 0.5rem 0;
+    font-weight: bold;
+}
+ul {
+    list-style: none;
 }

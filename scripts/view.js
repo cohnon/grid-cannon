@@ -86,6 +86,12 @@ class View {
         })
     }
 
+    killRoyale(position) {
+        const $dead = document.createElement("div")
+        $dead.classList = "emptyTile deadRoyale"
+        this.$royales[position].html($dead)
+    }
+
     /**
      * Place the initial empty tiles of the game
      */

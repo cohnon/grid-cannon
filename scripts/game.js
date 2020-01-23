@@ -113,6 +113,10 @@ class Game {
     pickUpCardFromStack() {
         // player can only pick up a card in game mode 0
         if (this.gameMode != 0) return
+        if (this.cardsInStack.length == 0) {
+            alert("GAME OVER: you ran out of cards")
+            return
+        }
 
         // update gameMode
         this.gameMode = 1
@@ -125,6 +129,9 @@ class Game {
         let available = []
         if (this.cardInHand.value <= 10) {
             available = this.board.availableNumberCards(this.cardInHand.value)
+            if (available.length == 0) {
+                alert("GAME OVER: you ran out of spaces")
+            }
             this.view.setAvailableNumber(available)
         } else {
             available = this.board.availableRoyaleCards(this.cardInHand)
@@ -141,13 +148,16 @@ class Game {
     placeCard(e, i) {
         if (e.currentTarget.classList.value == "validMove") {
             // if card is a royale
-            if (i >9) {
+            if (i >= 9) {
                 let royaleI = i - 9
                 this.board.placeRoyale(this.cardInHand, royaleI)
                 this.view.placeRoyaleCard(this.cardInHand, royaleI)
             } else {
-                this.board.placeNumber(this.cardInHand, i)
+                const deadRoyale = this.board.placeNumber(this.cardInHand, i)
                 this.view.placeNumberCard(this.cardInHand, i)
+                if (deadRoyale != undefined) {
+                    this.view.killRoyale(deadRoyale)
+                }
             }
             this.cardInHand = null
             this.view.removeCardAsCursor()

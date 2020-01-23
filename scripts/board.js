@@ -24,18 +24,106 @@ class Board {
      */
     placeNumber(card, position) {
         this.gridTiles[position] = card
-    }
 
-    /**
-     * Gets a list of available tiles a card of a certain value can be placed on
-     * @param {Card} value the value of the card
-     */
-    getAvailableTiles(card) {
-        if (value >= 11) {
-            this.availableFaceCards(card)
-        } else {
-            this.availableNumberCards(card.value)
+        // handle payload
+        let deadRoyale = null
+
+        if (position != 4) {
+            // get payload
+            let payload = []
+            switch(position) {
+                case 0:
+                    payload = [
+                        [this.royaleTiles[4], this.gridTiles[1], this.gridTiles[2], 4],
+                        [this.royaleTiles[9], this.gridTiles[3], this.gridTiles[6], 9]
+                    ]
+                    break
+                case 1:
+                    payload = [
+                        [this.royaleTiles[10], this.gridTiles[4], this.gridTiles[7], 10]
+                    ]
+                    break
+                case 2:
+                    payload = [
+                        [this.royaleTiles[3], this.gridTiles[1], this.gridTiles[0], 3],
+                        [this.royaleTiles[11], this.gridTiles[5], this.gridTiles[8], 11]
+                    ]
+                    break
+                case 3:
+                    payload = [
+                        [this.royaleTiles[6], this.gridTiles[4], this.gridTiles[5], 6]
+                    ]
+                    break
+                case 5:
+                    payload = [
+                        [this.royaleTiles[5], this.gridTiles[4], this.gridTiles[3], 5]
+                    ]
+                    break
+                case 6:
+                    payload = [
+                        [this.royaleTiles[0], this.gridTiles[3], this.gridTiles[0], 0],
+                        [this.royaleTiles[8], this.gridTiles[7], this.gridTiles[8], 8]
+                    ]
+                    break
+                case 7:
+                    payload = [
+                        [this.royaleTiles[1], this.gridTiles[4], this.gridTiles[1], 1],
+                    ]
+                    break
+                case 8:
+                    payload = [
+                        [this.royaleTiles[2], this.gridTiles[2], this.gridTiles[5], 2],
+                        [this.royaleTiles[7], this.gridTiles[7], this.gridTiles[6], 7]
+                    ]
+            }
+
+            payload.forEach(shot => {
+                if (shot[0] == null || shot[1] == null || shot[2] == 0) return
+    
+                if (shot[1].value + shot[2].value < shot[0].value) return
+        
+                if (shot[0].value == 11) {
+                    this.royaleTiles[shot[3]].isDead = true
+                    deadRoyale = shot[3]
+                } else if (shot[0].value == 12) {
+                    if (
+                        (
+                            (shot[0].suite == 0 || shot[0].suite == 1) &&
+                            (shot[1].suite == 0 || shot[1].suite == 1) &&
+                            (shot[2].suite == 0 || shot[2].suite == 1)
+                        ) ||
+                        (
+                            (shot[0].suite == 2 || shot[0].suite == 3) &&
+                            (shot[1].suite == 2 || shot[1].suite == 3) &&
+                            (shot[2].suite == 2 || shot[2].suite == 3)
+                        )
+                    ) {
+                        this.royaleTiles[shot[3]].isDead = true
+                        deadRoyale = shot[3]
+                    }
+                } else if (shot[0].value == 13) {
+                    if (
+                        (shot[1].suite == shot[0].suite) &&
+                        (shot[2].suite == shot[0].suite)
+                    ) {
+                        this.royaleTiles[shot[3]].isDead = true
+                        deadRoyale = shot[3]
+                    }
+                }
+            })
         }
+        let win = true
+        this.royaleTiles.forEach(tile => {
+            if (tile == null || !tile.isDead) {
+                win = false
+            }
+        })
+
+        if (win) {
+            alert("YOU WIN")
+        }
+
+        return deadRoyale
     }
 
     // loops through gridTiles and compares value
@@ -65,7 +153,9 @@ class Board {
         // loop through the royale tiles and get the highest
         // neighboring card, suite, and color 
         for (let i = 0; i < this.royaleTiles.length; i++) {
-            if (this.royaleTiles[i] != null) continue
+            if (this.royaleTiles[i] != null) {
+                continue
+            }
 
             const numberIndex = this.checkRoyaleNeighbor(i)
             const numberCard = this.gridTiles[numberIndex]
